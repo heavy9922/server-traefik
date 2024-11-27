@@ -20,7 +20,7 @@ services:
       - COLLECTOR_QUEUE_SIZE=1000
       - QUERY_BASE_PATH=/jaeger
     networks:
-      - jaeger_network
+      traefik_network:
 
 networks: 
   traefik_network:  
