@@ -26,12 +26,11 @@ log:
 
 accessLog: {}
 
-# tracing:
-#   serviceName: traefik
-#   jaeger:
-#     samplingServerURL: http://172.168.30.116:5778/sampling
-#     localAgentHostPort: 172.168.30.116:6831
-#     propagation: 172.168.30.116
+tracing:
+  serviceName: traefik
+  otlp:
+    http:
+      endpoint: http://otel-collector:4318/v1/traces
 
 tls:
   stores:
