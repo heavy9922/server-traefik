@@ -1,0 +1,22 @@
+[req]
+distinguished_name = req_distinguished_name
+req_extensions = v3_req
+prompt = no
+
+[req_distinguished_name]
+C = CO
+ST = Bogota
+L = Bogota
+O = inlaze
+OU = inlaze
+CN = inlazetest.com
+
+[v3_req]
+keyUsage = keyEncipherment, dataEncipherment
+extendedKeyUsage = serverAuth
+subjectAltName = @alt_names
+
+[alt_names]
+DNS.1 = inlazetest.com
+DNS.2 = *.inlazetest.com
+

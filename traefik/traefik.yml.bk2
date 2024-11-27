@@ -1,0 +1,21 @@
+entryPoints:
+  web:
+    address: ":80"
+  websecure:
+    address: ":443"
+
+providers:
+  docker: 
+    endpoint: "unix:///var/run/docker.sock"
+    exposedByDefault: false
+
+api:
+  dashboard: true
+
+log:
+  level: DEBUG
+accessLog: {}
+ls:
+  certificates:
+    - certFile: "/home/inlaze/all_proj/docker/traefik/certs/web.crt"
+      keyFile: "/home/inlaze/all_proj/docker/traefik/certs/web.key"
