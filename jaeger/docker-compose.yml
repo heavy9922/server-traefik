@@ -5,15 +5,15 @@ services:
     image: jaegertracing/all-in-one:latest
     container_name: jaeger
     ports:
-      - "5775:5775/udp" # Puerto para agentes UDP
-      - "6831:6831/udp" # Puerto de agentes UDP para compactación
-      - "6832:6832/udp" # Puerto para agentes UDP con protocolos binarios
-      - "5778:5778"     # Puerto para sampling remoto
-      - "16686:16686"   # Interfaz web de Jaeger
-      - "14250:14250"   # Puerto para envío de spans (gRPC)
-      - "14268:14268"   # Puerto para envío de spans (HTTP)
-      - "14269:14269"   # Puerto para administración
-      - "9411:9411"     # Puerto para compatibilidad con Zipkin
+      - "5775:5775/udp" 
+      - "6831:6831/udp" 
+      - "6832:6832/udp"
+      - "5778:5778"     
+      - "16686:16686" 
+      - "14250:14250"   
+      - "14268:14268"   
+      - "14269:14269"   
+      - "9411:9411"     
     environment:
       - COLLECTOR_ZIPKIN_HTTP_PORT=9411
       - REPORTER_LOG_SPANS=true
@@ -22,7 +22,8 @@ services:
     networks:
       - jaeger_network
 
-networks:
-  jaeger_network:
+networks: 
+  traefik_network:  
+    name: inlaze 
     driver: bridge
 
