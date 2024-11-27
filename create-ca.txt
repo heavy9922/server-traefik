@@ -1,0 +1,92 @@
+Configure Debian Server as CA with OpenSSL
+
+# Install OpenSSL package (if not installed)
+
+apt-get -y install openssl
+
+# Create a private key for yor CA
+
+openssl genrsa -aes256 -out ca.key 4096
+
+; Enter Passphrase for decrypting the key
+
+# (optional) Setup permissions for the key in order to prevent unauthorized access
+
+chmod 700 ca.key
+
+# Create the CA certificate, Using the previously created key
+
+openssl req -new -x509 -days 3650 -key ca.key -out ca.crt
+
+; You will be prompted for parameters for the certificate
+
+# At this point, we have configured our CA and we can start creating certificates from this.
+
+#Creating a Certificate from CA
+
+# Create private key
+
+openssl genrsa -aes256 -out web.key 1024
+
+# Create certificate request
+
+openssl req -new -days 365 -key web.key -out web.csr
+
+# Sign certificate with your CA certificate
+
+openssl x509 -req -days 365 -in web.csr -CA ca.crt -CAkey ca.key -set_serial 01 -out web.crt
+
+# Your Certificate is already signed by yor CA and can be used for securing services
+
+# You can remove the password from the key by using
+
+openssl rsa -in web.key -out web.key
+
+# create a file named san.cnf that will have the following settings
+
+[req]
+distinguished_name = req_distinguished_name
+req_extensions = v3_req
+prompt = no
+
+[req_distinguished_name]
+C = CO
+ST = Bogota
+L = Bogota
+O = inlaze
+OU = inlaze
+CN = inlazetest.com
+
+[v3_req]
+keyUsage = keyEncipherment, dataEncipherment
+extendedKeyUsage = serverAuth
+subjectAltName = @alt_names
+
+[alt_names]
+DNS.1 = inlazetest.com
+DNS.2 = *.inlazetest.com
+
+
+# assign read permission to the created file
+
+chmod 644 san.cnf
+
+
+# Generate CSR with configuration file
+
+openssl req -new -key web.key -out web.csr -config san.cnf
+
+
+# Sign the CSR to generate the certificate:
+
+openssl x509 -req -days 365 -in web.csr -CA ca.crt -CAkey ca.key -set_serial 01 -out web.crt -extensions v3_req -extfile san.cnf
+
+# Verify the generated certificate:
+
+openssl x509 -in web.crt -text -noout | grep -E "CN|DNS"
+
+# Remove the passphrase from the private certificate
+
+openssl rsa -in web.key -out web.key
+
+chmod 600 web.key
