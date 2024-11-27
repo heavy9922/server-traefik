@@ -4,6 +4,18 @@ services:
   jaeger:
     image: jaegertracing/all-in-one:latest
     container_name: jaeger
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.jaeger.rule=Host(`jaeger.inlazetest.com`)"
+      - "traefik.http.services.jaeger.loadbalancer.server.port=16686"
+      - "traefik.http.routers.jaeger.entrypoints=websecure" 
+      - "traefik.http.routers.jaeger.tls=true"
+      # Router para HTTP con redireccionamiento a HTTPS
+      - "traefik.http.routers.jaeger-redirect.rule=Host(`jaeger.inlazetest.com`)"
+      - "traefik.http.routers.jaeger-redirect.entrypoints=web"
+      - "traefik.http.routers.jaeger-redirect.middlewares=redirect-to-https"
+      # Middleware para redireccionar a HTTPS
+      - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
     ports:
       - "5775:5775/udp" 
       - "6831:6831/udp" 
