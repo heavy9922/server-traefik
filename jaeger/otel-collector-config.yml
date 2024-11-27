@@ -5,13 +5,11 @@ receivers:
       grpc:
 
 exporters:
-  jaeger:
-    endpoint: jaeger:14250
-    tls:
-      insecure: true
+  zipkin:
+    endpoint: "http://jaeger:9411/api/v2/spans"
 
 service:
   pipelines:
     traces:
       receivers: [otlp]
-      exporters: [jaeger]
+      exporters: [zipkin]
