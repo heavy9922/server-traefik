@@ -26,12 +26,12 @@ log:
 
 accessLog: {}
 
-# tracing:
-#   serviceName: traefik
-#   jaeger:
-#     samplingServerURL: http://jaeger:5778/sampling
-#     localAgentHostPort: jaeger:6831
-#     propagation: jaeger
+tracing:
+  serviceName: traefik
+  jaeger:
+    samplingServerURL: http://172.168.30.116:5778/sampling
+    localAgentHostPort: 172.168.30.116:6831
+    propagation: jaeger
 
 tls:
   stores:
