@@ -9,8 +9,7 @@ receivers:
 exporters:
   debug: {}
   otlp:
-    endpoint: 'jaeger:14250'
-    use_insecure: true 
+    endpoint: 'jaeger:4317'
 
 service:
   pipelines:
