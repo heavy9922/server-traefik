@@ -30,7 +30,7 @@ tracing:
   serviceName: traefik
   otlp:
     http:
-      endpoint: http://otel-collector:4318/v1/traces
+      endpoint: http://jaeger-otel-collector-1:4317/v1/traces
 
 tls:
   stores:
