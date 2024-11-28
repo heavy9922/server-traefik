@@ -8,8 +8,8 @@ receivers:
 
 exporters:
   debug: {}
-  otlphttp:
-    endpoint: 'http://jaeger:14268/api/traces'
+  otlp:
+    endpoint: 'jaeger:14250'
 
 service:
   pipelines:
