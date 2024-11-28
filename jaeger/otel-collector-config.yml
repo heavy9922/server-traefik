@@ -15,4 +15,4 @@ service:
   pipelines:
     traces:
       receivers: [otlp]
-      exporters: [debug, otlphttp]
+      exporters: [debug, otlp]
