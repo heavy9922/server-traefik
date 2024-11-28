@@ -39,7 +39,7 @@ services:
     depends_on:
       - jaeger
     networks:
-      - traefik_network
+      traefik_network:
 
 networks: 
   traefik_network:  
