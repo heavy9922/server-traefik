@@ -1,15 +1,16 @@
 receivers:
   otlp:
     protocols:
-      http:
       grpc:
+      http:
 
 exporters:
-  zipkin:
-    endpoint: "http://jaeger:9411/api/v2/spans"
+  debug: {}
+  otlphttp:
+    endpoint: 'http://jaeger:14268'
 
 service:
   pipelines:
     traces:
       receivers: [otlp]
-      exporters: [zipkin]
+      exporters: [debug, otlphttp]
