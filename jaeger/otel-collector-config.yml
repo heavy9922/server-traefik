@@ -15,13 +15,11 @@ receivers:
 
 exporters:
   debug: {}
-  jaeger:
-    endpoint: jaeger:14250
-    tls:
-      insecure: true
+  zipkin:
+    endpoint: http://jaeger:9411/api/v2/spans
 
 service:
   pipelines:
     traces:
       receivers: [otlp]
-      exporters: [debug, jaeger]
+      exporters: [debug, zipkin]
