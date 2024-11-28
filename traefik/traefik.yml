@@ -17,12 +17,6 @@ api:
 log:
   level: DEBUG  
 
-# tracing:
-#   serviceName: traefik
-#   jaeger:
-#     samplingServerURL: http://jaeger:5778/sampling
-#     localAgentHostPort: jaeger:6831
-#     propagation: jaeger
 
 accessLog: {}
 
@@ -30,7 +24,7 @@ tracing:
   serviceName: traefik
   otlp:
     http:
-      endpoint: http://jaeger-otel-collector-1:4318/v1/traces
+      endpoint: http://otel-collector:4318/v1/traces
 
 tls:
   stores:
