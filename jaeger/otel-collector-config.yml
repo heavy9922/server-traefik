@@ -10,10 +10,7 @@ exporters:
   debug: {}
   otlp:
     endpoint: 'jaeger:14250'
-    protocols:
-      grpc:
-        tls:
-          insecure: true
+    use_insecure: true 
 
 service:
   pipelines:
