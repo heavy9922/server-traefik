@@ -1,7 +1,9 @@
 services: 
     jenkins: 
         user: root 
-        image: jenkins/docker 
+        image: jenkins/docker
+        ports:
+          - "8080:8080"
         labels:
           - "traefik.enable=true"
           - "traefik.http.routers.jenkins.rule=Host(`jenkins-tmp.inlazetest.com`)"
