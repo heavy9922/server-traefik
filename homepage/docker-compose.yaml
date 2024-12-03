@@ -6,7 +6,6 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.homepage.rule=Host(`homepage-tmp.inlazetest.com`)"
       - "traefik.http.services.homepage.loadbalancer.server.port=3000"
-      - "traefik.http.routers.homepage.priority=100"
       - "traefik.http.routers.homepage.entrypoints=websecure" 
       - "traefik.http.routers.homepage.tls=true"
       # Router para HTTP con redireccionamiento a HTTPS
