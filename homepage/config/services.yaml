@@ -58,19 +58,19 @@
           icon: /images/microservice.png
           description: Task API
     - Conciliabot:
-          href: https://conciliabot-dev-tmp.inlazetest.com/
+          href: https://dev-conciliabot-tmp.inlazetest.com/
           icon: /images/microservice.png
           description: Conciliabot
     - Collector:
-          href: https://collector-dev-tmp.inlazetest.com/
+          href: https://dev-collector-tmp.inlazetest.com/
           icon: /images/microservice.png
           description: Collector
     - Processor:
-          href: https://processor-dev-tmp.inlazetest.com/
+          href: https://dev-processor-tmp.inlazetest.com/
           icon: /images/microservice.png
           description: Processor
     - Integrations:
-          href: https://integrations-dev-tmp.inlazetest.com/
+          href: https://dev-integrations-tmp.inlazetest.com/
           icon: /images/microservice.png
           description: Integrations
 
@@ -137,15 +137,15 @@
           icon: /images/microservice.png
           description: Conciliabot
     - Collector:
-          href: https://collector-qa-tmp.inlazetest.com/
+          href: https://qa-collector-tmp.inlazetest.com/
           icon: /images/microservice.png
           description: Collector
     - Processor:
-          href: https://processor-qa-tmp.inlazetest.com/
+          href: https://qa-processor-tmp.inlazetest.com/
           icon: /images/microservice.png
           description: Processor
     - Integrations:
-          href: https://integrations-qa-tmp.inlazetest.com/
+          href: https://qa-integrations-tmp.inlazetest.com/
           icon: /images/microservice.png
           description: Integrations
 
