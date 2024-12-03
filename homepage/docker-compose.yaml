@@ -1,0 +1,27 @@
+services:
+  homepage:
+    image: ghcr.io/benphelps/homepage:latest
+    container_name: homepage
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.homepage.rule=Host(`homepage-tmp.inlazetest.com`)"
+      - "traefik.http.services.homepage.loadbalancer.server.port=3000"
+      - "traefik.http.routers.homepage.priority=100"
+      - "traefik.http.routers.homepage.entrypoints=websecure" 
+      - "traefik.http.routers.homepage.tls=true"
+      # Router para HTTP con redireccionamiento a HTTPS
+      - "traefik.http.routers.homepage-redirect.rule=Host(`homepage-tmp.inlazetest.com`)"
+      - "traefik.http.routers.homepage-redirect.entrypoints=web"
+      - "traefik.http.routers.homepage-redirect.middlewares=redirect-to-https"
+      # Middleware para redireccionar a HTTPS
+      - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
+    volumes:
+      - ./config:/app/config
+      - ./images:/app/public/images
+      - ./icons:/app/public/icons
+    environment:
+      - PUID=1000
+      - PGID=1000
+    restart: unless-stopped
+    mem_limit: "4g"
+    mem_reservation: "2g"

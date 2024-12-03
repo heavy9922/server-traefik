@@ -1,0 +1,37 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/latest/configs/settings
+
+title: Inlaze Homepage
+style: tabs
+favicon: /icons/favicon.ico
+headerStyle: clean
+cardBlur: xl
+useEqualHeights: true
+
+background:
+  image: /images/bg.webp
+  blur: md
+  opacity: 50
+
+layout:
+  Development:
+    tab: Dev
+    style: row
+    columns: 4
+    disableCollapse: true
+  Quality Assurance:
+    tab: QA
+    style: row
+    columns: 4
+    disableCollapse: true
+  Release:
+    tab: Release
+    style: row
+    columns: 4
+    disableCollapse: true
+  Production:
+    tab: Prod
+    style: row
+    columns: 4
+    disableCollapse: true

@@ -1,0 +1,211 @@
+# services.yaml
+- Development:
+    # Landing
+    - Inlaze Landing Page:
+        href: https://dev-land-home-new-tmp.inlaze.com/es/
+        icon: /icons/favicon.ico
+        description: Inlaze landing page.
+
+    # Adviser
+    - Adviser:
+        href: https://dev-adviser-tmp.inlaze.com/
+        icon: /images/betenlace.png
+        description: Adviser
+    - Adviser Backend (API):
+        href: https://dev-bk-admin-tmp.inlaze.com/
+        icon: /images/betenlace.png
+        description: API Adviser
+    - Backoffice:
+        href: https://dev-backoffice-tmp.inlaze.com/
+        icon: /images/betenlace.png
+        description: Backoffice
+
+    # Affiliates
+    - Affiliates:
+        href: https://dev-affiliates-tmp.inlaze.com/
+        icon: /icons/favicon.ico
+        description: Affiliates
+    - Affiliates API:
+        href: https://dev-bk-affiliates-tmp.inlaze.com/
+3-06        icon: /icons/favicon.ico
+        description: Affiliates API
+    - Commizzion:
+        href: https://dev-land-commizzion-tmp.inlaze.com/es/
+        icon: /icons/favicon.ico
+        description: Commizzion
+
+    # Jobs
+    - Jobs Backoffice:
+        href: https://dev-backoffice-jobs-tmp.inlaze.com/
+        icon: /images/jobs.png
+        description: Jobs Backoffice
+    - Jobs Landing:
+        href: https://dev-jobs-tmp.inlaze.com/jobs/
+        icon: /images/jobs.png
+        description: Landing page Jobs.
+    - Jobs API:
+        href: https://dev-bk-jobs-tmp.inlaze.com/
+        icon: /images/jobs.png
+        description: API de jobs
+
+    # Microservices
+    - Redirect API:
+          href: https://dev-bk-redirect-tmp.inlaze.com/
+          icon: /images/microservice.png
+          description: Redirect API
+    - Task API:
+          href: https://dev-bk-task-tmp.inlaze.com/
+          icon: /images/microservice.png
+          description: Task API
+    - Conciliabot:
+          href: https://conciliabot-dev-tmp.inlaze.com/
+          icon: /images/microservice.png
+          description: Conciliabot
+    - Collector:
+          href: https://collector-dev-tmp.inlaze.com/
+          icon: /images/microservice.png
+          description: Collector
+    - Processor:
+          href: https://processor-dev-tmp.inlaze.com/
+          icon: /images/microservice.png
+          description: Processor
+    - Integrations:
+          href: https://integrations-dev-tmp.inlaze.com/
+          icon: /images/microservice.png
+          description: Integrations
+
+- Quality Assurance:
+    # Landing
+    - Inlaze Landing Page:
+        href: https://qa-land-home-new-tmp.inlaze.com/es/
+        icon: /icons/favicon.ico
+        description: Inlaze landing page.
+
+    # Adviser
+    - Adviser:
+        href: https://qa-adviser-tmp.inlaze.com/
+        icon: /images/betenlace.png
+        description: Adviser
+    - Adviser Backend (API):
+        href: https://qa-bk-admin-tmp.inlaze.com/
+        icon: /images/betenlace.png
+        description: API Adviser
+    - Backoffice:
+        href: https://qa-backoffice-tmp.inlaze.com/
+        icon: /images/betenlace.png
+        description: Backoffice
+
+    # Affiliates
+    - Affiliates:
+        href: https://qa-affiliates-tmp.inlaze.com/
+        icon: /icons/favicon.ico
+        description: Affiliates
+    - Affiliates API:
+        href: https://qa-bk-affiliates-tmp.inlaze.com/
+        icon: /icons/favicon.ico
+        description: Affiliates API
+    - Commizzion:
+        href: https://qa-land-commizzion-tmp.inlaze.com/es/
+        icon: /icons/favicon.ico
+        description: Commizzion
+
+    # Jobs
+    - Jobs Backoffice:
+        href: https://qa-backoffice-jobs-tmp.inlaze.com/
+        icon: /images/jobs.png
+        description: Jobs Backoffice
+    - Jobs Landing:
+        href: https://qa-jobs-tmp.inlaze.com/jobs/
+        icon: /images/jobs.png
+        description: Landing page Jobs.
+    - Jobs API:
+        href: https://qa-bk-jobs-tmp.inlaze.com/
+        icon: /images/jobs.png
+        description: API de jobs
+
+    # Microservices
+    - Redirect API:
+          href: https://qa-bk-redirect-tmp.inlaze.com/
+          icon: /images/microservice.png
+          description: Redirect API
+    - Task API:
+          href: https://qa-bk-task-tmp.inlaze.com/
+          icon: /images/microservice.png
+          description: Task API
+    - Conciliabot:
+          href: https://conciliabot-qa-tmp.inlaze.com/
+          icon: /images/microservice.png
+          description: Conciliabot
+    - Collector:
+          href: https://collector-qa-tmp.inlaze.com/
+          icon: /images/microservice.png
+          description: Collector
+    - Processor:
+          href: https://processor-qa-tmp.inlaze.com/
+          icon: /images/microservice.png
+          description: Processor
+    - Integrations:
+          href: https://integrations-qa-tmp.inlaze.com/
+          icon: /images/microservice.png
+          description: Integrations
+
+- Release:
+    - Comming Soon:
+        href: '#'
+- Production:
+    - Inlaze Landing Page:
+        href: https://inlaze.com/es/
+        icon: /icons/favicon.ico
+        description: Inlaze landing page.
+
+    # Adviser
+    - Adviser:
+        href: https://adviser.inlaze.com/
+        icon: /images/betenlace.png
+        description: Adviser
+    - Adviser Backend (API):
+        href: https://bkadmin.inlaze.com/
+        icon: /images/betenlace.png
+        description: API Adviser
+    - Backoffice:
+        href: https://backoffice.inlaze.com/
+        icon: /images/betenlace.png
+        description: Backoffice
+
+    # Affiliates
+    - Affiliates:
+        href: https://affiliates.inlaze.com/
+        icon: /icons/favicon.ico
+        description: Affiliates
+    - Affiliates API:
+        href: https://bkmain.inlaze.com/
+        icon: /icons/favicon.ico
+        description: Affiliates API
+    - Commizzion:
+        href: https://commizzion.com/
+        icon: /icons/favicon.ico
+        description: Commizzion
+
+    # Jobs
+    - Jobs Backoffice:
+        href: https://backoffice-jobs.inlaze.com/
+        icon: /images/jobs.png
+        description: Jobs Backoffice
+    - Jobs Landing:
+        href: https://inlaze.com/jobs/
+        icon: /images/jobs.png
+        description: Landing page Jobs.
+    - Jobs API:
+        href: https://bk-jobs.inlaze.com/
+        icon: /images/jobs.png
+        description: API de jobs
+
+    # Microservices
+    - Redirect API:
+        href: https://datab.inlaze.com/
+        icon: /images/microservice.png
+        description: Redirect API
+    - Task API:
+        href: https://bktask.inlaze.com/
+        icon: /images/microservice.png
+        description: Task API
