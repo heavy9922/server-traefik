@@ -1,0 +1,112 @@
+version: '3.9'
+name: 'local-compose'
+services:
+  redis-dev:
+    image: redis
+    restart: always
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+      - REDIS_PORT_DEV=${REDIS_PORT_DEV}
+    ports:
+      - "${REDIS_PORT_DEV}:6379"
+    command: ["redis-server", "--port", "${REDIS_PORT_DEV}"]
+  redis-commander-dev:
+    image: rediscommander/redis-commander
+    restart: always
+    environment:
+      - REDIS_HOSTS=local:redis-dev:${REDIS_PORT_DEV}
+    ports:
+      - "8081:8081"
+  
+  redis-qa:
+    image: redis
+    restart: always
+    env_file:
+      - ../env/.env-redis
+    ports:
+      - target: 6381
+        published: 6381
+        protocol: tcp
+        mode: host
+    container_name: redis-qa
+    volumes:
+      - ./qa/redis.conf:/usr/local/etc/redis/redis.conf
+    command: ["redis-server", "/usr/local/etc/redis/redis.conf"]
+  redis-commander-qa:
+    image: rediscommander/redis-commander
+    restart: always
+    environment:
+      - REDIS_HOSTS=local:redis-qa:${REDIS_PORT_QA}
+    ports:
+      - "8082:8081"
+
+  redis-release:
+    image: redis
+    restart: always
+    env_file:
+      - ../env/.env-redis
+    ports:
+      - target: 6380
+        published: 6380
+        protocol: tcp
+        mode: host
+    container_name: redis-release
+    volumes:
+      - ./release/redis.conf:/usr/local/etc/redis/redis.conf
+    command: ["redis-server", "/usr/local/etc/redis/redis.conf"]
+  redis-commander-release:
+    image: rediscommander/redis-commander
+    restart: always
+    environment:
+      - REDIS_HOSTS=local:redis-release:${REDIS_PORT_RELEASE}
+    ports:
+      - "8083:8081"
+
+  redis-apis-dev:
+    image: redis
+    restart: always
+    env_file:
+      - ../env/.env-redis
+    ports:
+      - target: 6382
+        published: 6382
+        protocol: tcp
+        mode: host
+    container_name: redis-apis-dev
+    volumes:
+      - ./apis-dev/redis.conf:/usr/local/etc/redis/redis.conf
+    command: ["redis-server", "/usr/local/etc/redis/redis.conf"]
+  redis-commander-apis-dev:
+    image: rediscommander/redis-commander
+    restart: always
+    environment:
+      - REDIS_HOSTS=local:redis-apis-dev:${REDIS_PORT_APIS_DEV}
+    ports:
+      - "8084:8081"
+
+  mongo:
+    image: mongo
+    restart: always
+    ports:
+      - '27017:27017'
+    volumes:
+      - ../volumes/mongo:/data/db
+      - ../entrypoint/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+    env_file:
+      - ../env/.mongo.env
+      
+  postgres-16:
+    image: postgres:16.3-alpine
+    restart: always
+    env_file:
+      - ../env/.postgres.env
+    ports:
+      - "5432:5432"
+    volumes:
+      - ../entrypoint/docker_postgres_init.sql:/docker-entrypoint-initdb.d/docker_postgres_init.sql
+      - ../volumes/postgres16:/var/lib/postgresql/data
+networks:
+  default:
+    name: "${NETWORK_NAME?error}"
+    external: true
+
