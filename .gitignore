@@ -4,3 +4,5 @@
 
 airflow/logs/dag_processor_manager
 airflow/logs/scheduler
+db_wolverine/volumes
+
