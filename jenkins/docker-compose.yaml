@@ -10,7 +10,7 @@ services:
           - "traefik.http.services.jenkins.loadbalancer.server.port=8080"
           - "traefik.http.routers.jenkins.priority=100"
           - "traefik.http.routers.jenkins.entrypoints=websecure" 
-          - "traefik.http.routers.jenkins.tls=true"
+          - "traefik.http.routers.traefik.tls.certresolver=myresolver"
           # Router para HTTP con redireccionamiento a HTTPS
           - "traefik.http.routers.jenkins-redirect.rule=Host(`jenkins-tmp.inlazetest.com`)"
           - "traefik.http.routers.jenkins-redirect.entrypoints=web"
@@ -34,7 +34,7 @@ services:
         - "traefik.http.routers.sonarqube.rule=Host(`sonar.inlazetest.com`)"
         - "traefik.http.services.sonarqube.loadbalancer.server.port=9000"
         - "traefik.http.routers.sonarqube.entrypoints=websecure" 
-        - "traefik.http.routers.sonarqube.tls=true"
+        - "traefik.http.routers.traefik.tls.certresolver=myresolver"
         # Router para HTTP con redireccionamiento a HTTPS
         - "traefik.http.routers.sonarqube-redirect.rule=Host(`sonar.inlazetest.com`)"
         - "traefik.http.routers.sonarqube-redirect.entrypoints=web"
