@@ -1,7 +1,7 @@
 /jenkins/jenkins_home
 .vscode
 /traefik/certs
-
+/traefik/acme.json
 airflow/logs/dag_processor_manager
 airflow/logs/scheduler
 db_wolverine/volumes
