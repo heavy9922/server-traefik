@@ -4,12 +4,12 @@ services:
     container_name: homepage
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.homepage.rule=Host(`homepage-tmp.inlazetest.com`)"
+      - "traefik.http.routers.homepage.rule=Host(`directory-tmp.inlazetest.com`)"
       - "traefik.http.services.homepage.loadbalancer.server.port=3000"
       - "traefik.http.routers.homepage.entrypoints=websecure" 
       - "traefik.http.routers.homepage.tls=true"
       # Router para HTTP con redireccionamiento a HTTPS
-      - "traefik.http.routers.homepage-redirect.rule=Host(`homepage-tmp.inlazetest.com`)"
+      - "traefik.http.routers.homepage-redirect.rule=Host(`directory-tmp.inlazetest.com`)"
       - "traefik.http.routers.homepage-redirect.entrypoints=web"
       - "traefik.http.routers.homepage-redirect.middlewares=redirect-to-https"
       # Middleware para redireccionar a HTTPS
