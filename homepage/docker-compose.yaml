@@ -24,3 +24,11 @@ services:
     restart: unless-stopped
     mem_limit: "4g"
     mem_reservation: "2g"
+    networks:
+      - traefik_network
+
+
+networks: 
+  traefik_network:  
+    name: inlaze 
+    driver: bridge
