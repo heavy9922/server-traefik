@@ -26,17 +26,24 @@ tracing:
     http:
       endpoint: http://otel-collector:4318/v1/traces
 
-tls:
-  stores:
-    default:
-      defaultCertificate:
-        certFile: "/certs/web.crt"  
-        keyFile: "/certs/web.key"  
+# tls:
+#   stores:
+#     default:
+#       defaultCertificate:
+#         certFile: "/certs/web.crt"  
+#         keyFile: "/certs/web.key"  
+
+# certificatesResolvers:
+#   default:
+#     acme:
+#       email: devops@inlaze.com  
+#       storage: "/acme.json"  
+#       tlsChallenge: {}
+
 
 certificatesResolvers:
-  default:
+  myresolver:
     acme:
-      email: devops@inlaze.com  
-      storage: "/acme.json"  
+      email: devops@inlaze.com
+      storage: /acme.json
       tlsChallenge: {}
-
