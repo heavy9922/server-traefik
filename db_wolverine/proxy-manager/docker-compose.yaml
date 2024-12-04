@@ -10,6 +10,8 @@ services:
       - ./config.json:/app/config/production.json
       - ./data:/data
       - ./letsencrypt:/etc/letsencrypt
+    networks:
+      - traefik_network
   db:
     image: 'jc21/mariadb-aria:10.4.15'
     environment:
@@ -19,3 +21,11 @@ services:
       MYSQL_PASSWORD: 'npm'
     volumes:
       - ./data/mysql:/var/lib/mysql
+    networks:
+      - traefik_network
+
+
+networks: 
+  traefik_network:  
+    name: inlaze 
+    driver: bridge
