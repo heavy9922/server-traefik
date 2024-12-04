@@ -1,3 +1,6 @@
 /jenkins/jenkins_home
 .vscode
 /traefik/certs
+
+airflow/logs/dag_processor_manager
+airflow/logs/scheduler
