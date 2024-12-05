@@ -8,7 +8,7 @@ services:
       - "traefik.http.routers.jaeger.rule=Host(`jaeger.inlazetest.com`)"
       - "traefik.http.services.jaeger.loadbalancer.server.port=16686"
       - "traefik.http.routers.jaeger.entrypoints=websecure" 
-      - "traefik.http.routers.traefik.tls.certresolver=mycerts"
+      - "traefik.http.routers.jaeger.tls.certresolver=mycerts"
       # Router para HTTP con redireccionamiento a HTTPS
       - "traefik.http.routers.jaeger-redirect.rule=Host(`jaeger.inlazetest.com`)"
       - "traefik.http.routers.jaeger-redirect.entrypoints=web"
