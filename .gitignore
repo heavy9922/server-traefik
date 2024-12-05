@@ -5,4 +5,6 @@
 airflow/logs/dag_processor_manager
 airflow/logs/scheduler
 db_wolverine/volumes
+db_wolverine/proxy-manager/data/
+db_wolverine/proxy-manager/letsencrypt/
 
