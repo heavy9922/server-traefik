@@ -16,7 +16,7 @@ services:
       - "traefik.http.routers.traefik.rule=Host(`traefik.inlazetest.com`)"
       - "traefik.http.routers.traefik.service=api@internal"
       - "traefik.http.routers.traefik.entrypoints=websecure"
-      - "traefik.http.routers.traefik.tls.certresolver=myresolver"
+      - "traefik.http.routers.traefik.tls.certresolver=mycerts"
     restart: always
     networks:
       traefik_network:

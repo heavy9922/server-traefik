@@ -42,7 +42,7 @@ tracing:
 
 
 certificatesResolvers:
-  myresolver:
+  mycerts:
     acme:
       email: devops@inlaze.com
       storage: /acme.json
