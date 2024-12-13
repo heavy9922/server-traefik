@@ -20,11 +20,11 @@ log:
 
 accessLog: {}
 
-# tracing:
-#   serviceName: traefik
-#   otlp:
-#     http:
-#       endpoint: http://otel-collector:4318/v1/traces
+tracing:
+  serviceName: traefik
+  otlp:
+    http:
+      endpoint: http://otel-collector:4318/v1/traces
 
 # tls:
 #   stores:
@@ -41,9 +41,9 @@ accessLog: {}
 #       tlsChallenge: {}
 
 
-certificatesResolvers:
-  myresolver:
-    acme:
-      email: aux.ti@inlaze.com
-      storage: /acme.json
-      tlsChallenge: {}
+# certificatesResolvers:
+#   myresolver:
+#     acme:
+#       email: aux.ti@inlaze.com
+#       storage: /acme.json
+#       tlsChallenge: {}
