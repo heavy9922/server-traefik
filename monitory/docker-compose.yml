@@ -6,7 +6,6 @@ volumes:
   loki-data:
   promtail-data:
 
-
 services:
   grafana:
     image: grafana/grafana:8.0.6
@@ -14,22 +13,20 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.grafana.rule=Host(`grafana-tmp.inlazetest.com`)"
       - "traefik.http.services.grafana.loadbalancer.server.port=3000"
-      - "traefik.http.routers.grafana.entrypoints=websecure" 
+      - "traefik.http.routers.grafana.entrypoints=websecure"
       - "traefik.http.routers.grafana.tls.certresolver=myresolver"
-      # Router para HTTP con redireccionamiento a HTTPS
       - "traefik.http.routers.grafana-redirect.rule=Host(`grafana-tmp.inlazetest.com`)"
       - "traefik.http.routers.grafana-redirect.entrypoints=web"
       - "traefik.http.routers.grafana-redirect.middlewares=redirect-to-https"
-      # Middleware para redireccionar a HTTPS
       - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
     container_name: grafana
     restart: unless-stopped
     volumes:
-    - grafana-data:/var/lib/grafana
+      - grafana-data:/var/lib/grafana
     logging:
       driver: loki
       options:
-        loki-url: "http://localhost:3100/loki/api/v1/push"  
+        loki-url: "http://loki:3100/loki/api/v1/push"
     networks:
       - traefik_network
 
@@ -39,28 +36,26 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.prometheus.rule=Host(`prometheus-tmp.inlazetest.com`)"
       - "traefik.http.services.prometheus.loadbalancer.server.port=9090"
-      - "traefik.http.routers.prometheus.entrypoints=websecure" 
+      - "traefik.http.routers.prometheus.entrypoints=websecure"
       - "traefik.http.routers.prometheus.tls.certresolver=myresolver"
-      # Router para HTTP con redireccionamiento a HTTPS
       - "traefik.http.routers.prometheus-redirect.rule=Host(`prometheus-tmp.inlazetest.com`)"
       - "traefik.http.routers.prometheus-redirect.entrypoints=web"
       - "traefik.http.routers.prometheus-redirect.middlewares=redirect-to-https"
-      # Middleware para redireccionar a HTTPS
       - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
     container_name: prometheus
     restart: unless-stopped
     volumes:
-    - ./prometheus.yml:/etc/prometheus/prometheus.yml
-    - prometheus-data:/prometheus
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus-data:/prometheus
     command:
-    - '--config.file=/etc/prometheus/prometheus.yml'
-    - '--storage.tsdb.path=/prometheus'
-    - '--storage.tsdb.retention.time=1y'
-    - '--web.enable-lifecycle'
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--storage.tsdb.retention.time=1y'
+      - '--web.enable-lifecycle'
     logging:
       driver: loki
       options:
-        loki-url: "http://localhost:3100/loki/api/v1/push"  
+        loki-url: "http://loki:3100/loki/api/v1/push"
     networks:
       - traefik_network
 
@@ -70,53 +65,49 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.node_exporter.rule=Host(`node-exporter-tmp.inlazetest.com`)"
       - "traefik.http.services.node_exporter.loadbalancer.server.port=9100"
-      - "traefik.http.routers.node_exporter.entrypoints=websecure" 
+      - "traefik.http.routers.node_exporter.entrypoints=websecure"
       - "traefik.http.routers.node_exporter.tls.certresolver=myresolver"
-      # Router para HTTP con redireccionamiento a HTTPS
       - "traefik.http.routers.node_exporter-redirect.rule=Host(`node-exporter-tmp.inlazetest.com`)"
       - "traefik.http.routers.node_exporter-redirect.entrypoints=web"
       - "traefik.http.routers.node_exporter-redirect.middlewares=redirect-to-https"
-      # Middleware para redireccionar a HTTPS
       - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
     container_name: node_exporter
     restart: unless-stopped
     command:
-    - '--path.rootfs=/host'
+      - '--path.rootfs=/host'
     pid: host
     volumes:
-    - '/:/host:ro,rslave'
+      - '/:/host:ro,rslave'
     logging:
       driver: loki
       options:
-        loki-url: "http://localhost:3100/loki/api/v1/push"  
+        loki-url: "http://loki:3100/loki/api/v1/push"
     networks:
       - traefik_network
-        
+
   cadvisor:
     image: gcr.io/cadvisor/cadvisor:latest
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.cadvisor.rule=Host(`cadvisor-tmp.inlazetest.com`)"
       - "traefik.http.services.cadvisor.loadbalancer.server.port=8080"
-      - "traefik.http.routers.cadvisor.entrypoints=websecure" 
+      - "traefik.http.routers.cadvisor.entrypoints=websecure"
       - "traefik.http.routers.cadvisor.tls.certresolver=myresolver"
-      # Router para HTTP con redireccionamiento a HTTPS
       - "traefik.http.routers.cadvisor-redirect.rule=Host(`cadvisor-tmp.inlazetest.com`)"
       - "traefik.http.routers.cadvisor-redirect.entrypoints=web"
       - "traefik.http.routers.cadvisor-redirect.middlewares=redirect-to-https"
-      # Middleware para redireccionar a HTTPS
       - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
     container_name: cadvisor
     restart: unless-stopped
     volumes:
-    - /:/rootfs:ro
-    - /var/run:/var/run:rw
-    - /sys:/sys:ro
-    - /var/lib/docker/:/var/lib/docker:ro
+      - /:/rootfs:ro
+      - /var/run:/var/run:rw
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
     logging:
       driver: loki
       options:
-        loki-url: "http://localhost:3100/loki/api/v1/push"  
+        loki-url: "http://loki:3100/loki/api/v1/push"
     networks:
       - traefik_network
 
@@ -126,21 +117,19 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.loki.rule=Host(`loki-tmp.inlazetest.com`)"
       - "traefik.http.services.loki.loadbalancer.server.port=3100"
-      - "traefik.http.routers.loki.entrypoints=websecure" 
+      - "traefik.http.routers.loki.entrypoints=websecure"
       - "traefik.http.routers.loki.tls.certresolver=myresolver"
-      # Router para HTTP con redireccionamiento a HTTPS
       - "traefik.http.routers.loki-redirect.rule=Host(`loki-tmp.inlazetest.com`)"
       - "traefik.http.routers.loki-redirect.entrypoints=web"
       - "traefik.http.routers.loki-redirect.middlewares=redirect-to-https"
-      # Middleware para redireccionar a HTTPS
       - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
     container_name: loki
     restart: unless-stopped
     volumes:
-    - ./loki-config.yml:/mnt/config/loki-config.yml
-    - loki-data:/loki
-    command: 
-    - '-config.file=/mnt/config/loki-config.yml'
+      - ./loki-config.yml:/mnt/config/loki-config.yml
+      - loki-data:/loki
+    command:
+      - '-config.file=/mnt/config/loki-config.yml'
     networks:
       - traefik_network
 
@@ -149,21 +138,21 @@ services:
     container_name: promtail
     restart: unless-stopped
     volumes:
-    - /var/log/:/var/log/:ro
-    - /home/:/home_server:ro
-    - /root/:/root_user:ro
-    - ./promtail.yml:/etc/promtail/promtail.yml
-    - promtail-data:/tmp
-    command: -config.file=/etc/promtail/promtail.yml\
+      - /var/log/:/var/log/:ro
+      - /home/:/home_server:ro
+      - /root/:/root_user:ro
+      - ./promtail.yml:/etc/promtail/promtail.yml
+      - promtail-data:/tmp
+    command:
+      - '-config.file=/etc/promtail/promtail.yml'
     logging:
       driver: loki
       options:
-        loki-url: "http://localhost:3100/loki/api/v1/push"  
+        loki-url: "http://loki:3100/loki/api/v1/push"
     networks:
       - traefik_network
-    
 
-networks: 
-  traefik_network:  
-    name: inlaze 
+networks:
+  traefik_network:
+    name: inlaze
     driver: bridge
