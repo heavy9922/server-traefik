@@ -26,6 +26,10 @@ services:
     restart: unless-stopped
     volumes:
     - grafana-data:/var/lib/grafana
+    logging:
+      driver: loki
+      options:
+        loki-url: "http://localhost:3100/loki/api/v1/push"  
     networks:
       - traefik_network
 
@@ -53,6 +57,10 @@ services:
     - '--storage.tsdb.path=/prometheus'
     - '--storage.tsdb.retention.time=1y'
     - '--web.enable-lifecycle'
+    logging:
+      driver: loki
+      options:
+        loki-url: "http://localhost:3100/loki/api/v1/push"  
     networks:
       - traefik_network
 
@@ -77,6 +85,10 @@ services:
     pid: host
     volumes:
     - '/:/host:ro,rslave'
+    logging:
+      driver: loki
+      options:
+        loki-url: "http://localhost:3100/loki/api/v1/push"  
     networks:
       - traefik_network
         
@@ -101,6 +113,10 @@ services:
     - /var/run:/var/run:rw
     - /sys:/sys:ro
     - /var/lib/docker/:/var/lib/docker:ro
+    logging:
+      driver: loki
+      options:
+        loki-url: "http://localhost:3100/loki/api/v1/push"  
     networks:
       - traefik_network
 
@@ -125,6 +141,10 @@ services:
     - loki-data:/loki
     command: 
     - '-config.file=/mnt/config/loki-config.yml'
+    logging:
+      driver: loki
+      options:
+        loki-url: "http://localhost:3100/loki/api/v1/push"  
     networks:
       - traefik_network
 
@@ -138,7 +158,11 @@ services:
     - /root/:/root_user:ro
     - ./promtail.yml:/etc/promtail/promtail.yml
     - promtail-data:/tmp
-    command: -config.file=/etc/promtail/promtail.yml
+    command: -config.file=/etc/promtail/promtail.yml\
+    logging:
+      driver: loki
+      options:
+        loki-url: "http://localhost:3100/loki/api/v1/push"  
     networks:
       - traefik_network
     
