@@ -8,4 +8,4 @@ db_wolverine/volumes
 db_wolverine/proxy-manager/data/
 db_wolverine/proxy-manager/letsencrypt/
 wireguard-vpn/wireguard-config/
-
+wordpress/.env

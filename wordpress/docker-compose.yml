@@ -1,0 +1,53 @@
+version: '3.9'
+
+services:
+  db:
+    image: mysql:5.7
+    container_name: wordpress_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - traefik_network
+
+
+  wordpress:
+    image: wordpress:latest
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.wordpress.rule=Host(`cms-tmp.inlazetest.com`)"
+      - "traefik.http.services.wordpress.loadbalancer.server.port=80"
+      - "traefik.http.routers.wordpress.entrypoints=websecure" 
+      - "traefik.http.routers.wordpress.tls.certresolver=myresolver"
+      # Router para HTTP con redireccionamiento a HTTPS
+      - "traefik.http.routers.wordpress-redirect.rule=Host(`cms-tmp.inlazetest.com`)"
+      - "traefik.http.routers.wordpress-redirect.entrypoints=web"
+      - "traefik.http.routers.wordpress-redirect.middlewares=redirect-to-https"
+      # Middleware para redireccionar a HTTPS
+      - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
+    container_name: wordpress
+    restart: always
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: ${MYSQL_USER}
+      WORDPRESS_DB_PASSWORD: ${MYSQL_PASSWORD}
+      WORDPRESS_DB_NAME: ${MYSQL_DATABASE}
+    volumes:
+      - wordpress_data:/var/www/html
+    networks:
+      - traefik_network
+
+
+volumes:
+  db_data:
+  wordpress_data:
+
+networks: 
+  traefik_network:  
+    name: inlaze 
+    driver: bridge
