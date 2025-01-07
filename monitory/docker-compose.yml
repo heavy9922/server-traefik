@@ -156,3 +156,4 @@ networks:
   traefik_network:
     name: inlaze
     driver: bridge
+    external: true
