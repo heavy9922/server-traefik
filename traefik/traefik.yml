@@ -44,6 +44,6 @@ accessLog: {}
 certificatesResolvers:
   myresolver:
     acme:
-      email: aux.ti@inlaze.com
+      email: aux.it@inlaze.com
       storage: /acme.json
       tlsChallenge: {}
