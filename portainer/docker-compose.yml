@@ -5,7 +5,7 @@ services:
     image: portainer/portainer-ce:latest
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.portainer.rule=Host(`portainer.inlazetest.com`)"
+      - "traefik.http.routers.portainer.rule=Host(`portainer.inlazetest.com.co`)"
       - "traefik.http.services.portainer.loadbalancer.server.port=9000"
       - "traefik.http.routers.portainer.entrypoints=web"
     container_name: portainer
