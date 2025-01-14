@@ -20,7 +20,7 @@ services:
 
 volumes:
   portainer_data:
-  
+
 networks:
   traefik_network:
-    external: truee
+    external: true
