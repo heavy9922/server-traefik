@@ -23,8 +23,5 @@ services:
 
 networks:
   traefik_network:
-    name: inlaze
-    driver: bridge
-    ipam:
-      driver: default
+    external: true
 
