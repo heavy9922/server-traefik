@@ -16,12 +16,12 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - portainer_data:/data
     networks:
-      inlaze:
+      traefik_inlaze:
 
 volumes:
   portainer_data:
 
 networks: 
-  inlaze:  
+  traefik_inlaze:  
     driver: bridge
     external: true
