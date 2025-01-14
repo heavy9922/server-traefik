@@ -19,10 +19,11 @@ services:
       # - "traefik.http.routers.traefik.tls.certresolver=myresolver"
     restart: always
     networks:
-      inlaze:
+      traefik_network:
 
 networks:
-  inlaze:
+  traefik_network:
+    name: inlaze
     driver: bridge
     ipam:
       driver: default
