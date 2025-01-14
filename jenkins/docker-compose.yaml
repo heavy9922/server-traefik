@@ -17,6 +17,7 @@ services:
           # - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
         build: 
           context: . 
+        container_name: jenkins
         privileged: true 
         volumes: 
           - $PWD/jenkins_home:/var/jenkins_home 
