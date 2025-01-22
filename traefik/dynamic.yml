@@ -1,0 +1,13 @@
+http:
+  routers:
+    dynamic-router:
+      rule: "PathPrefix(`/`)"
+      service: dynamic-service
+      entryPoints:
+        - web
+
+  services:
+    dynamic-service:
+      loadBalancer:
+        servers:
+          - url: "http://192.168.1.10:8089/containers"

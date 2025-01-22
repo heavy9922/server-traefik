@@ -5,45 +5,23 @@ entryPoints:
     address: ":443"
 
 providers:
+  # file:
+  #   filename: "/dynamic.yml"
+  #   watch: true
   docker:
     endpoint: "unix:///var/run/docker.sock"
     exposedByDefault: false
     network: traefik_network  
+    
+  http:
+    endpoint: "http://192.168.1.10:8089/containers"
+    pollInterval: "10s"
 
 api:
-  dashboard: true  
-  insecure: true  
+  dashboard: true
+  insecure: true
 
 log:
-  level: DEBUG  
-
+  level: DEBUG
 
 accessLog: {}
-
-# tracing:
-#   serviceName: traefik
-#   otlp:
-#     http:
-#       endpoint: http://otel-collector:4318/v1/traces
-
-# tls:
-#   stores:
-#     default:
-#       defaultCertificate:
-#         certFile: "/certs/web.crt"  
-#         keyFile: "/certs/web.key"  
-
-# certificatesResolvers:
-#   default:
-#     acme:
-#       email: devops@inlaze.com  
-#       storage: "/acme.json"  
-#       tlsChallenge: {}
-
-
-# certificatesResolvers:
-#   myresolver:
-#     acme:
-#       email: aux.it@inlaze.com
-#       storage: /acme.json
-#       tlsChallenge: {}
