@@ -9,6 +9,10 @@ providers:
     endpoint: "unix:///var/run/docker.sock"
     exposedByDefault: false
     network: traefik_network  
+    
+  http:
+    endpoint: "http://172.168.30.215:8089/containers"
+    pollInterval: "60s"
 
 api:
   dashboard: true  
