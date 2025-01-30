@@ -18,6 +18,8 @@ services:
         build: 
           context: . 
         container_name: jenkins
+        ports:
+          - 8085:8080
         privileged: true 
         volumes: 
           - $PWD/jenkins_home:/var/jenkins_home 
