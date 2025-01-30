@@ -45,6 +45,8 @@ services:
       # - "traefik.http.routers.prometheus-redirect.middlewares=redirect-to-https"
       # - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
     container_name: prometheus
+    ports:
+      - 9090:9090
     restart: unless-stopped
     volumes:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
@@ -74,6 +76,8 @@ services:
       # - "traefik.http.routers.node_exporter-redirect.middlewares=redirect-to-https"
       # - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
     container_name: node_exporter
+    ports:
+      - 9100:9100
     restart: unless-stopped
     command:
       - '--path.rootfs=/host'
@@ -100,6 +104,8 @@ services:
       # - "traefik.http.routers.cadvisor-redirect.middlewares=redirect-to-https"
       # - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
     container_name: cadvisor
+    ports:
+      - 8086:8080
     restart: unless-stopped
     volumes:
       - /:/rootfs:ro
@@ -126,6 +132,8 @@ services:
       # - "traefik.http.routers.loki-redirect.middlewares=redirect-to-https"
       # - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
     container_name: loki
+    ports:
+      - 3100:3100
     restart: unless-stopped
     volumes:
       - ./loki-config.yml:/mnt/config/loki-config.yml
