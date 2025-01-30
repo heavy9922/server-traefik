@@ -19,6 +19,8 @@ services:
       # - "traefik.http.routers.grafana-redirect.entrypoints=web"
       # - "traefik.http.routers.grafana-redirect.middlewares=redirect-to-https"
       # - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
+    ports:
+      - 3000:3000
     container_name: grafana
     restart: unless-stopped
     volumes:
