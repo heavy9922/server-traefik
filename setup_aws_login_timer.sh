@@ -70,3 +70,16 @@ echo "⏳ Estado del timer:"
 systemctl list-timers --all | grep "$SERVICE_NAME"
 
 echo "✅ Configuración completada. El script AWS Login se ejecutará cada 11 horas."
+
+
+#  chmod +x setup_aws_login_timer.sh
+
+# sudo ./setup_aws_login_timer.sh
+
+# 📌 ¿Qué hace este script?
+# ✔️ Crea el archivo aws_login.sh si no existe.
+# ✔️ Asigna permisos de ejecución al script.
+# ✔️ Crea el servicio systemd (aws-login.service).
+# ✔️ Crea el timer systemd (aws-login.timer).
+# ✔️ Recarga systemd y activa el timer.
+# ✔️ Muestra el estado del timer.
