@@ -29,10 +29,23 @@
         href: https://dev-bk-affiliates-tmp.inlazetest.com/
         icon: /icons/favicon.ico
         description: Affiliates API
+    - API commizzion:
+        href: https://dev-bk-api-commizzion-tmp.inlazetest.com/
+        icon: /icons/favicon.ico
+        description: Affiliates API
+    - API countries:
+        href: https://dev-bk-api-countries-tmp.inlazetest.com
+        icon: /icons/favicon.ico
+        description: Affiliates API
     - Commizzion:
         href: https://dev-land-commizzion-tmp.inlazetest.com/es/
         icon: /icons/favicon.ico
         description: Commizzion
+
+    - Account Commizzion:
+        href: https://dev-account-commizzion-tmp.inlazetest.com
+        icon: /icons/favicon.ico
+        description: account-Commizzion
 
     # Jobs
     - Jobs Backoffice:
@@ -71,6 +84,11 @@
           description: Processor
     - Integrations:
           href: https://dev-integrations-tmp.inlazetest.com/
+          icon: /images/microservice.png
+          description: Integrations
+
+    - Storybook:
+          href: https://storybook-tmp.inlazetest.com/
           icon: /images/microservice.png
           description: Integrations
 
